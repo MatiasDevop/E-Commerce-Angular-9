@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 const routes: Routes = [
         {
-          path:'',
+          path:'',// this for if this is empty default 
           pathMatch: 'full',
           redirectTo:'home'  
         },
