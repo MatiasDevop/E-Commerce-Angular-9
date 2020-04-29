@@ -1,18 +1,30 @@
-<mat-card class="login-card">
+<mat-card>
     <mat-card-header>
-        <mat-card-title>Login</mat-card-title>
+        <mat-card-title>Register</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form cellspacing="0">
-            <table cell>
+        <form [formGroup]="userForm">
+            <table cellspacing="0">
+                <tr>
+                    <td>
+                        <mat-form-field>
+                            <input name="fullname" 
+                            matInput 
+                            formControlName="fullname" 
+                            placeholder="FullName" 
+                            required />
+                        </mat-form-field>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <mat-form-field>
                             <input name="email" 
                             matInput 
-                            [(ngModel)]="email" 
+                            formControlName="email"
                             placeholder="Email" 
-                            required />
+                            required 
+                            type="email"/>
                         </mat-form-field>
                     </td>
                 </tr>
@@ -21,23 +33,18 @@
                         <mat-form-field>
                             <input name="password" 
                             matInput 
-                            [(ngModel)]="password" 
+                            formControlName="password" 
                             placeholder="Password" 
                             required 
                             type="password"/>
                         </mat-form-field> 
                     </td>
                 </tr>
-
             </table>
         </form>
-        
     </mat-card-content>
     <mat-card-actions>
         <button mat-raised-button color="primary" 
-         (click)="login()">Login</button>
-         <span>
-             If you dont have an account? <a [routerLink]="['/register']"> register</a> here.
-         </span>
+        (click)="register()">Register</button>
     </mat-card-actions>
 </mat-card>
