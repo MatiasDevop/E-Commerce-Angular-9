@@ -18,7 +18,7 @@ if(config.env === 'development'){
 
 }
 // get dist folder
-const distDir = path.join(__dirname, '../../dist');
+const distDir = path.resolve(__dirname, '../../dist/proy-ng9');
 
 // use dist dolfer as hosting folder by express
 app.use(express.static(distDir));

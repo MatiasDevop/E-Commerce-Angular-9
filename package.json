@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "serve":"ng serve",
     "start:server": "node server/index.js",
     "server:watch": "nodemon server",
     "start": "ng serve",
@@ -10,7 +11,8 @@
     "build:prod": "npm run build -- --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "debug":"node --nolazy --inspect-brk=9229 server"
   },
   "private": true,
   "dependencies": {
