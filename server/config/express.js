@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const helmet = require('helmet');
 const routes = require('../routes');
-
+const passport = require('../middleware/passport');
 //init app
 
 const app = express();
@@ -31,6 +31,10 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(helmet());
 // allow cors
 app.use(cors());
+
+//Authenticate
+app.use(passport.initialize());
+
 
 //ap router localhost:4050/api
 app.use('/api/', routes);
