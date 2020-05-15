@@ -35,7 +35,7 @@ async function getUserbyEmailIdAndPassword(req, res ,next){
 }
 
 function login(req, res){
-    const user = req.body;
+    const user = req.user;
     const token = authController.generateToken(user);
     res.json({
         user,
