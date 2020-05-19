@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
-import { of, Subject, throwError } from 'rxjs';
+import { of, Subject, throwError, EMPTY } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { User } from './user';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
 
+
+interface UserDto {
+  user: User;
+  token: string;
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -21,15 +26,13 @@ export class AuthService {
     const loginCredentials = {email, password};
     console.log('Login creadentials', loginCredentials);
 
-
-
-    return this.httpClient.post<User>(`${this.apiUrl}login`,
+    return this.httpClient.post<UserDto>(`${this.apiUrl}login`,
     loginCredentials).pipe(
-      switchMap(
-        foundUser =>{
-          this.setUser(foundUser);
-          console.log(`User found`, foundUser);
-          return of(foundUser);
+      switchMap(({user , token}) => {
+          this.setUser(user);
+          this.tokenStorage.setToken(token);
+          console.log(`User found`, user);
+          return of(user);
         }
       ),
       catchError(e => {
@@ -41,7 +44,9 @@ export class AuthService {
   
   logout(){
     //Remove user from subject
-    this .setUser(null);
+    //remove token from localstorage
+    this.tokenStorage.removeToken();
+    this.setUser(null);
     console.log('user did logout succesfull');
 
   }
@@ -72,28 +77,26 @@ export class AuthService {
     // return of(user);
   }
 
-  // findMe(){
-  //   const token = this.tokenStorage.getToken();
-  //   if (!token) {
-  //     return;
-  //   }
+  findMe(){
+    const token = this.tokenStorage.getToken();
+    if (!token) {
+      return EMPTY;
+    }
 
-  //   return this.httpClient.post<User>(`${this.apiUrl}login`,
-  //   loginCredentials)
-  //   .pipe(
-  //     switchMap(
-  //       foundUser =>{
-  //         this.setUser(foundUser);
-  //         console.log(`User found`, foundUser);
-  //         return of(foundUser);
-  //       }
-  //     ),
-  //     catchError(e => {
-  //       console.log(`Your login details could not be verified. Please try again`, e );
-  //       return throwError(`Your login details could notbe verified. Please try again`);
-  //     })
-  //   )
-  // }
+    return this.httpClient.get<any>(`${this.apiUrl}findme`)
+    .pipe(
+      switchMap(foundUser =>{
+          this.setUser(foundUser);
+          console.log(`User found`, foundUser);
+          return of(foundUser);
+        }
+      ),
+      catchError(e => {
+        console.log(`Your login details could not be verified. Please try again`, e );
+        return throwError(`Your login details could notbe verified. Please try again`);
+      })
+    )
+  }
 
   private setUser(user){
     this.user$.next(user);

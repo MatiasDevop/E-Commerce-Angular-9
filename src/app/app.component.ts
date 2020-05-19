@@ -16,19 +16,23 @@ export class AppComponent implements OnDestroy{
   constructor(private authService:AuthService,
     private router:Router){
     
+      // WHEN you reload the page this works for mainten the user login
+      this.authService.findMe().subscribe(user => (this.user = user));
+  
       this.authService.user
         .subscribe(user => {
           (this.user=user);
       });
   }
-  ngOnDestroy(): void {
-    if(this.userSubscription){
-      this.userSubscription.unsubscribe();
-    }
-  }
 
   logout(){
     this.authService.logout();
     this.router.navigate(['/']);
+  }
+
+  ngOnDestroy(): void {
+    if(this.userSubscription){
+      this.userSubscription.unsubscribe();
+    }
   }
 }
