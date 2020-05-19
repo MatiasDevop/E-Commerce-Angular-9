@@ -6,7 +6,7 @@
       <span class="left-spacer"></span>
       <a mat-button [routerLink]="['/home']" routerLinkActive="active-link" >Home</a>
       <a mat-button [routerLink]="['/products']" routerLinkActive="active-link"> Products</a>
-      <a *ngIf="!user" mat-button [routerLink]="['/login']" routerLinkActive="active-link">
+      <a *ngIf="!user" mat-button [routerLink]="['/auth']" routerLinkActive="active-link">
         Login</a>
         <div>
             <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
