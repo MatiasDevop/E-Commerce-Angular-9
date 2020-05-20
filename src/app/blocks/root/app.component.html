@@ -1,10 +1,8 @@
-
- <header>
+<header>
   <mat-toolbar color="secondary">
     <mat-toolbar-row>
       <a class="logo" [routerLink]="['/']"></a>
       <span class="left-spacer"></span>
-      <a mat-button [routerLink]="['/home']" routerLinkActive="active-link" >Home</a>
       <a mat-button [routerLink]="['/products']" routerLinkActive="active-link"> Products</a>
       <a *ngIf="!user" mat-button [routerLink]="['/auth']" routerLinkActive="active-link">
         Login</a>

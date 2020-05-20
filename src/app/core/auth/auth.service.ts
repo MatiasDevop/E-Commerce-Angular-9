@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of, Subject, throwError, EMPTY } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
-import { User } from './user';
+import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
 
