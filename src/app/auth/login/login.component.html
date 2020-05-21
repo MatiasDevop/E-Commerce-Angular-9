@@ -30,7 +30,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <mat-error *ngIf="error">{{ error }}</mat-error>
+                        <mat-error *ngIf="error">{{ error | async }}</mat-error>
                     </td>
                 </tr>
 
