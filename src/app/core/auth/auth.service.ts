@@ -4,6 +4,7 @@ import { switchMap, catchError } from 'rxjs/operators';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
 import { TokenStorageService } from './token-storage.service';
+import { LogService } from '@core/log.service';
 
 
 interface UserDto {
@@ -19,7 +20,8 @@ export class AuthService {
   private apiUrl= '/api/auth/';
 
   constructor(private httpClient: HttpClient,
-    private tokenStorage: TokenStorageService) { }
+    private tokenStorage: TokenStorageService,
+    private logService: LogService) { }
 
   login(email: string, password: string){
 
@@ -36,7 +38,8 @@ export class AuthService {
         }
       ),
       catchError(e => {
-        console.log(`Your login details could not be verified. Please try again`, e );
+        this.logService.log(`Server Error Occureed: ${e.error.message} `, e);
+        //replace this for//console.log(`Your login details could not be verified. Please try again`, e );
         return throwError(`Your login details could notbe verified. Please try again`);
       })
     )
