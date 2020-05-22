@@ -1,21 +1,3 @@
-<header>
-  <mat-toolbar color="secondary">
-    <mat-toolbar-row>
-      <a class="logo" [routerLink]="['/']"></a>
-      <span class="left-spacer"></span>
-      <a mat-button [routerLink]="['/products']" routerLinkActive="active-link"> Products</a>
-      <a *ngIf="!user" mat-button [routerLink]="['/auth']" routerLinkActive="active-link">
-        Login</a>
-        <div>
-            <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
-              <mat-icon>account_circle</mat-icon>{{user.fullname}}
-            </a>
-            <mat-menu #menu="matMenu">
-                <button (click)="logout()" mat-menu-item>logout</button>
-            </mat-menu>
-        </div>
-    </mat-toolbar-row>
-  </mat-toolbar>
-</header>
 
+<app-header [user]="user | async" (logoutEvent)="logout()"></app-header>
 <router-outlet></router-outlet>
