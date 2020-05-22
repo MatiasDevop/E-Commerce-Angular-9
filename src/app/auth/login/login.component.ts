@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush // this for all child that the cannot be overriden
   // it can increase the perform from your application and it makes reactive and 
   // you dont need to use input() or output()

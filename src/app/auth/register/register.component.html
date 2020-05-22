@@ -64,11 +64,14 @@
         </form>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" 
+        <button class="full-width" mat-raised-button color="primary" 
         (click)="register()">Register</button>
-        <span class="left-spacer">Already have a account login here 
-            <a [routerLink]="['/auth']">login</a>
-            here
-        </span>
+        <div style="margin-top: 2em;">
+            <span class="left-spacer">Already have a account login here 
+                <a [routerLink]="['/auth']">login</a>
+                here
+            </span>
+        </div>
+        
     </mat-card-actions>
 </mat-card>

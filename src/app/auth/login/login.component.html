@@ -3,22 +3,24 @@
         <mat-card-title>Login</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <form cellspacing="0">
-            <table cell>
+        <form>
+            <table cellspacing="0" class="full-width">
                 <tr>
                     <td>
-                        <mat-form-field>
+                        <mat-form-field class="full-width">
                             <input name="email" 
                             matInput 
                             [(ngModel)]="email" 
                             placeholder="Email" 
-                            required />
+                            required 
+                            type="email"
+                            />
                         </mat-form-field>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <mat-form-field>
+                        <mat-form-field class="full-width">
                             <input name="password" 
                             matInput 
                             [(ngModel)]="password" 
@@ -39,10 +41,18 @@
         
     </mat-card-content>
     <mat-card-actions>
-        <button mat-raised-button color="primary" 
-         (click)="login()">Login</button>
-         <span>
-             If you dont have an account? <a [routerLink]="['/auth/register']"> register</a> here.
-         </span>
+        <button 
+            class="full-width" 
+            mat-raised-button 
+            color="primary" 
+            (click)="login()"
+            [tabIndex]="0"
+            >Login
+        </button>
+            <div style="margin-top: 2em;">
+                <span>
+                    New to Product Mart? <a [routerLink]="['/auth/register']">Sing up</a> here.
+                </span>
+            </div>    
     </mat-card-actions>
 </mat-card>
