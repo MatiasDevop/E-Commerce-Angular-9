@@ -2,7 +2,9 @@
     max-width: 400px;
     margin: 5px;
   }
-  
+  .full-width{
+    width: 100%;
+  }
   .example-header-image {
     background-size: cover;
   }
@@ -23,4 +25,7 @@
   }
   .mat-spinner {
     margin: 10% auto;
+  }
+  .mat-paginator {
+    padding-bottom: 4em;
   }

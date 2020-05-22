@@ -1,5 +1,9 @@
 <mat-card>
   <mat-card-content>
+    <mat-form-field class="full-width">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+    </mat-form-field>
     <table matSort  mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!--- Note that these columns can be defined in any order.
             The actual rendered columns are set as a property on the row definition" -->
@@ -40,6 +44,7 @@
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <mat-paginator [pageSizeOptions]="[3, 5, 9]" showFirstLastButtons></mat-paginator>
     <mat-spinner *ngIf="loading"></mat-spinner>
   </mat-card-content>
 </mat-card>
