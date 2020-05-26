@@ -35,7 +35,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(s => s.unsubscribe());
   }
   
-  onDataLoad(products){
+  onDataLoad(products: Product[]){
     this.loading = false;
     this.dataSource.sort = this.sort;// this before to get data to improve the performance 
     this.dataSource.paginator = this.paginator;

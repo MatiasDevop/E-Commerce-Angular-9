@@ -11,7 +11,7 @@ export class ProductDataService {
   
   constructor(private $http:HttpClient) { }
 
-  getAllProducts(): Observable<Product>{
-    return this.$http.get('products.json').pipe(delay(2000)) as Observable<Product>;
+  getAllProducts(): Observable<Product[]>{
+    return this.$http.get('products.json').pipe(delay(2000)) as Observable<Product[]>;
   }
 }
