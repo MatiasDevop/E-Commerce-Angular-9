@@ -1,0 +1,77 @@
+<mat-card class="register-card">
+    <mat-card-header>
+        <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form>
+            <table cellspacing="0" class="full-width" [formGroup]="userForm">
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input name="fullname" 
+                            matInput 
+                            formControlName="fullname" 
+                            placeholder="FullName" 
+                            required />
+                        </mat-form-field>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input name="email" 
+                            matInput 
+                            formControlName="email"
+                            placeholder="Email" 
+                            required 
+                            type="email"/>
+                        </mat-form-field>
+                        <mat-error 
+                         *ngIf="email.invalid && email.errors.email">
+                            Invalid email
+                        </mat-error>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input name="password" 
+                            matInput 
+                            formControlName="password" 
+                            placeholder="Password" 
+                            required 
+                            type="password"/>
+                        </mat-form-field> 
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <mat-form-field class="full-width">
+                            <input name="repeatPassword" 
+                            matInput 
+                            formControlName="repeatPassword" 
+                            placeholder="Repeat Password" 
+                            required 
+                            type="password"/>
+                        </mat-form-field> 
+                        <mat-error *ngIf="repeatPassword.invalid &&
+                         repeatPassword.errors.passwordMatch">
+                            Password should match
+                        </mat-error>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </mat-card-content>
+    <mat-card-actions>
+        <button class="full-width" mat-raised-button color="primary" 
+        (click)="register()">Register</button>
+        <div style="margin-top: 2em;">
+            <span class="left-spacer">Already have a account login here 
+                <a [routerLink]="['/auth']">login</a>
+                here
+            </span>
+        </div>
+        
+    </mat-card-actions>
+</mat-card>
