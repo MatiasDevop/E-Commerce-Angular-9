@@ -4,6 +4,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Product } from '@core/products/product';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { AddToCartDialogComponent } from '@shared/cart/add-to-cart-dialog/add-to-cart-dialog.component';
 
 
 @Component({
@@ -21,7 +23,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
-  constructor(private productDataService: ProductDataService) { }
+  productToAdd: Product;
+
+  constructor(private productDataService: ProductDataService,
+                public dialogCart: MatDialog) { }
 
   ngOnInit(){
     this.subscriptions.push(
@@ -46,5 +51,18 @@ export class ProductsComponent implements OnInit, OnDestroy {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  
+  openDialog(product: any): void{
+
+    const dialogRef = this.dialogCart.open(AddToCartDialogComponent,{
+      width: '250px',
+      data: product
+    });
+    
+    dialogRef.afterClosed().subscribe(result =>{
+      console.log('THe dialog was closed');
+      this.productToAdd = result;
+    })
   }
 }

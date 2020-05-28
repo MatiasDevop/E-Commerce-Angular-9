@@ -8,7 +8,6 @@ import { SharedModule } from './shared/shared.module';
 import { BlocksModule } from './blocks/blocks.module';
 import { CoreModule } from '@angular/flex-layout';
 
-
 @NgModule({
   imports: [
     BrowserModule,

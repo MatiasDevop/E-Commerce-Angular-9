@@ -3,10 +3,10 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class Store<T> {
 
     state$ : Observable<T>;
-    private _state$ : BehaviorSubject<T>; // this is a oberser and observable at the same time
+    private _state$ : BehaviorSubject<T>; // this is a observer and observable at the same time
 
     constructor(initialState: T){
-        //bet oprtunity to instance
+        //best opportunity to instance
         this._state$ = new BehaviorSubject<T>(initialState);
         this.state$ = this._state$.asObservable();
     }
