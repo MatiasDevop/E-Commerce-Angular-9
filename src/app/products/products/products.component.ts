@@ -56,7 +56,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   openDialog(product: any): void{
 
     const dialogRef = this.dialogCart.open(AddToCartDialogComponent,{
-      width: '250px',
+      height: '40%',
+      width: '350px',
       data: product
     });
     

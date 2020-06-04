@@ -18,7 +18,7 @@ export class Store<T> {
 
     protected setState(nexState: T): void{
         console.log('------------');
-        console.log('Previus State', this.state);
+        console.log('Previous State', this.state);
         
         this._state$.next(nexState);
 

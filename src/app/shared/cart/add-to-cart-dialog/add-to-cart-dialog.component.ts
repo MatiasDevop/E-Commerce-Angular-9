@@ -7,14 +7,14 @@ import { Product } from '@core/products/product';
   templateUrl: './add-to-cart-dialog.component.html',
   styleUrls: ['./add-to-cart-dialog.component.scss']
 })
-export class AddToCartDialogComponent implements OnInit {
+export class AddToCartDialogComponent{
 
   constructor(public dialogRef: MatDialogRef<AddToCartDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: Product) { }
 
-  ngOnInit(): void {
-    console.log('loading Modal', this.data);
-  }
+  // ngOnInit(): void {
+  //   console.log('loading Modal', this.data);
+  // }
 
   onNoClick(): void {
     this.dialogRef.close();

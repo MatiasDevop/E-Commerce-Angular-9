@@ -5,9 +5,10 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { RouterModule } from '@angular/router';
 import { PmMaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { AddToCartDialogComponent } from './cart/add-to-cart-dialog/add-to-cart-dialog.component';
 
 @NgModule({
+  declarations:[AddToCartDialogComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
