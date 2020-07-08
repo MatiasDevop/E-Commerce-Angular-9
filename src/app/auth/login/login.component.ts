@@ -12,8 +12,6 @@ import { BehaviorSubject } from 'rxjs';
   // you dont need to use input() or output()
 })
 export class LoginComponent implements OnInit {
-  // @Input()
-  // ErrorMessage;
   email:  string;
   error: BehaviorSubject<string>; // this is gonna convert in observable. html wants to subcribe them 
   password: string;

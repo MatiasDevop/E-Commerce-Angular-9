@@ -5,7 +5,8 @@ import { Product } from '@core/products/product';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
-import { AddToCartDialogComponent } from '@shared/cart/add-to-cart-dialog/add-to-cart-dialog.component';
+//import { AddToCartDialogComponent } from '@shared/cart/add-to-cart-dialog/add-to-cart-dialog.component';
+import { CartService } from '@core/cart/cart.service';
 
 
 @Component({
@@ -26,7 +27,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
   productToAdd: Product;
 
   constructor(private productDataService: ProductDataService,
-                public dialogCart: MatDialog) { }
+                public dialogCart: MatDialog,
+                private cartService: CartService) { }
 
   ngOnInit(){
     this.subscriptions.push(
@@ -53,17 +55,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   
-  openDialog(product: any): void{
-
-    const dialogRef = this.dialogCart.open(AddToCartDialogComponent,{
-      height: '40%',
-      width: '350px',
-      data: product
-    });
-    
-    dialogRef.afterClosed().subscribe(result =>{
-      console.log('THe dialog was closed');
-      this.productToAdd = result;
-    })
+  addItemToCart(product) {
+      this.cartService.addToCart(product, 2);
   }
+  // openDialog(product: any): void{
+
+  //   const dialogRef = this.dialogCart.open(AddToCartDialogComponent,{
+  //     height: '40%',
+  //     width: '350px',
+  //     data: product
+  //   });
+    
+  //   dialogRef.afterClosed().subscribe(result =>{
+  //     console.log('THe dialog was closed');
+  //     this.productToAdd = result;
+  //   })
+  // }
 }

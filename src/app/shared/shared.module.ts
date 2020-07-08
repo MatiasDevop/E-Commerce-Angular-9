@@ -5,10 +5,11 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { RouterModule } from '@angular/router';
 import { PmMaterialModule } from './material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddToCartDialogComponent } from './cart/add-to-cart-dialog/add-to-cart-dialog.component';
+//import { AddToCartDialogComponent } from './cart/add-to-cart-dialog/add-to-cart-dialog.component';
+import { CartItemsCountComponent } from './cart/cart-items-count/cart-items-count.component';
 
 @NgModule({
-  declarations:[AddToCartDialogComponent],
+  declarations:[CartItemsCountComponent],
   imports: [
     CommonModule,
     SharedRoutingModule,
@@ -20,7 +21,8 @@ import { AddToCartDialogComponent } from './cart/add-to-cart-dialog/add-to-cart-
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    CartItemsCountComponent
   ]
 })
 export class SharedModule { }

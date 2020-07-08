@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { BlocksModule } from './blocks/blocks.module';
 import { CoreModule } from '@angular/flex-layout';
+import { CartItemsCountComponent } from './shared/cart/cart-items-count/cart-items-count.component';
 
 @NgModule({
   imports: [
@@ -19,6 +20,8 @@ import { CoreModule } from '@angular/flex-layout';
     CoreModule
   ],
   
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
+  declarations: []
 })
 export class AppModule { }

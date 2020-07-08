@@ -21,7 +21,7 @@ describe('CartStore', () => {
 
   it('can add item into cart state', () => {
     //const cartStore = new CartStore(); this goes to the top
-    const currentState = initialState;// start arrangment 
+    const currentState = initialState;// start arrangement 
     expect(currentState.cartItems.length)
     .toBe(0);
 
