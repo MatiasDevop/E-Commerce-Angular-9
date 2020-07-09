@@ -35,9 +35,7 @@
       <ng-container matColumnDef="addToCart">
         <th mat-header-cell *matHeaderCellDef>Action</th>
         <td mat-cell *matCellDef="let product">
-          <button mat-raised-button color="primary" (click)="addItemToCart(product)">
-              <mat-icon>add_shopping_cart</mat-icon>
-          </button>
+          <app-add-to-cart [product]="product"></app-add-to-cart>
         </td>
       </ng-container>
 

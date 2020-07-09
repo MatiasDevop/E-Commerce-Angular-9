@@ -13,6 +13,8 @@ export class CartStore extends Store<CartState> {
 
     addCartItem(cartItemToAdd: import("./cart-item").CartItem) {
         console.log('[Cart] Add cart item');
+        this.logService.log("[Cart] Add Item", cartItemToAdd);// you can add this service onto all CRUD
+
         const newState = {
             ... this.state, // cartItems,this instruction just is to update
             cartItems: [].concat(this.state.cartItems, cartItemToAdd)

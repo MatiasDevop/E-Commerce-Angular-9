@@ -1,0 +1,36 @@
+$iconWidth: 56px;
+.mat-icon {
+  font-size: 30px;
+  height: $iconWidth;
+  width: $iconWidth;
+  line-height: $iconWidth;
+  color: white;
+}
+.addcart-btn-text,
+.viewcart-btn-text {
+  display: inline;
+}
+.atc-container {
+  width: 50%;
+  box-shadow: none;
+}
+
+.atc-spacer {
+  flex: 1 1 auto;
+}
+
+.mat-column-price {
+  flex: 1 1 60px;
+}
+
+.atc-quantity {
+  width: 5em;
+  margin-right: 2em;
+}
+
+@media all and (max-width: 699px) {
+  .addcart-btn-text,
+  .viewcart-btn-text {
+    display: none;
+  }
+}
