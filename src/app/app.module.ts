@@ -7,7 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { BlocksModule } from './blocks/blocks.module';
 import { CoreModule } from '@angular/flex-layout';
-
+import { CartItemsCountComponent } from './shared/cart/cart-items-count/cart-items-count.component';
+import { AddToCartComponent } from './shared/cart/add-to-cart/add-to-cart.component';
 
 @NgModule({
   imports: [

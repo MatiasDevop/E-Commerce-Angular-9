@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
@@ -16,6 +15,10 @@ const routes: Routes = [
         {
           path: 'auth',
           loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) //'./auth/auth.module#AuthModule' 
+        },
+        {
+          path: "cart",
+          loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
         }
 
         // to refactoring we are gonna move on the AuthRouting module
