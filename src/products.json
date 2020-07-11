@@ -10,7 +10,8 @@
       "Ratings": [
         5,
         5
-      ]
+      ],
+      "id": 1
     },
     {
       "name": "jenlooper-light",
@@ -20,7 +21,8 @@
       "Title": "A beautiful switch-on book light",
       "Description": "Use craft items you have around the house, plus two LEDs and a LilyPad battery holder, to create a useful book light for reading in the dark.",
       "price": 112,
-      "Ratings": null
+      "Ratings": null,
+      "id": 2
     },
     {
       "name": "jenlooper-lightshow",
@@ -30,7 +32,8 @@
       "Title": "Bling your Laptop with an Internet-Connected Light Show",
       "Description": "Create a web-connected light-strip API controllable from your website, using the Particle.io.",
       "price": 32,
-      "Ratings": null
+      "Ratings": null,
+      "id": 3
     },
     {
       "name": "jenlooper-survival",
@@ -40,7 +43,8 @@
       "Title": "Create a Compact Survival Kit with LED Track Lighting",
       "Description": "Use an Altoids tin with Chibitronics sticker LEDs to create a light-up compact that doubles as a survival kit for the young hipster",
       "price": 13,
-      "Ratings": null
+      "Ratings": null,
+      "id": 4
     },
     {
       "name": "sailorhg-bubblesortpic",
@@ -50,6 +54,7 @@
       "Title": "Bubblesort Visualization",
       "Description": "Visualization of sailor scouts sorted by bubblesort algorithm by their planet\u0027s distance from the sun",
       "price": 17,
-      "Ratings": null
+      "Ratings": null,
+      "id": 5
     }
   ]

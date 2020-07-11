@@ -11,17 +11,20 @@ export class CartStore extends Store<CartState> {
         super(initialState);
     }
 
-    addCartItem(cartItemToAdd: import("./cart-item").CartItem) {
-        console.log('[Cart] Add cart item');
+    addCartItem = (cartItemToAdd: CartItem) => {
         this.logService.log("[Cart] Add Item", cartItemToAdd);// you can add this service onto all CRUD
 
-        const newState = {
-            ... this.state, // cartItems,this instruction just is to update
+        this.setState({
+            ...this.state,
             cartItems: [].concat(this.state.cartItems, cartItemToAdd)
-        };
+        });
+        // const . = {
+        //     ... this.state, // cartItems,this instruction just is to update
+        //     cartItems: [].concat(this.state.cartItems, cartItemToAdd)
+        // };
 
-        this.setState(newState); 
-    }
+        // this.setState(newState); 
+    };
 
     clearCart() {
         console.log('[Cart] Clear cart item');
@@ -40,7 +43,7 @@ export class CartStore extends Store<CartState> {
         console.log('[Cart] Remove cart item');
         const newState = {
             ... this.state, // cartItems
-            cartItems: this.state.cartItems.filter(cartItem => cartItem.productId != cartItemToRemove.productId)
+            cartItems: this.state.cartItems.filter(cartItem => cartItem.id != cartItemToRemove.id)
         };
 
         this.setState(newState); 
@@ -50,7 +53,7 @@ export class CartStore extends Store<CartState> {
         const newState = {
             ... this.state, // cartItems[1, 3]
             cartItems: this.state.cartItems.map(cartItem => 
-                cartItem.productId === cartItemToUpdate.productId ? 
+                cartItem.id === cartItemToUpdate.id ? 
                 cartItemToUpdate
                 : cartItem)
         };
