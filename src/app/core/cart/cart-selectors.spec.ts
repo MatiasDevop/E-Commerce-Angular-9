@@ -12,7 +12,7 @@ describe("Cart Store Selectors", () => {
         let result : number;
         given(() => {
             const tenApples: CartItem ={
-                productId: 1,
+                id: 1,
                 quantity: 10,
                 imgUrl: "img/apple",
                 itemTotal: 20,
@@ -20,7 +20,7 @@ describe("Cart Store Selectors", () => {
                 price: 2
             };
             const fiveOranges: CartItem = {
-                productId: 1,
+                id: 1,
                 quantity: 5,
                 imgUrl: "img/orange",
                 itemTotal: 20,
@@ -40,7 +40,7 @@ describe("Cart Store Selectors", () => {
     });
     it('Can find cart item', () => {
         const itemInCart: CartItem = {
-            productId: 1,
+            id: 1,
             imgUrl: "img/apple",
             itemTotal: 20,
             name: "apple",
@@ -48,7 +48,7 @@ describe("Cart Store Selectors", () => {
             quantity: 10,
         };
         const itemInCart1: CartItem = {
-            productId: 2,
+            id: 2,
             imgUrl: "img/orange",
             itemTotal: 20,
             name: "orange",

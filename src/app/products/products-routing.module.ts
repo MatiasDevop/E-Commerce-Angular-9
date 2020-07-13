@@ -5,7 +5,6 @@ import { ProductsComponent } from './products/products.component';
 
 const routes: Routes = [{
     path:'',
-    pathMatch: 'full',
     component: ProductsComponent
 }];
 

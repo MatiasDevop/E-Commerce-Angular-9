@@ -3,7 +3,6 @@ import { CartStore } from '@core/cart/cart-store';
 import { CartService, ALLOWED_PRODUCT_QUANTITIES } from '@core/cart/cart.service';
 import { Product } from '@core/products/product';
 import { Observable } from 'rxjs';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { getIsItemAlreadyInCart } from '@core/cart/cart-selector';
 
 @Component({
@@ -24,7 +23,7 @@ export class AddToCartComponent implements OnInit {
   ngOnInit(): void {
     this.availableQuantities = ALLOWED_PRODUCT_QUANTITIES; // CART SERVICE;
     this.isItemAlreadyInCart = this.cartStore.select(
-      getIsItemAlreadyInCart(this.product.productId)
+      getIsItemAlreadyInCart(this.product.id)
     );
     this.quantity = 1;
   }
