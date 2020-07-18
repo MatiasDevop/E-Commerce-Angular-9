@@ -9,6 +9,7 @@ import { BlocksModule } from './blocks/blocks.module';
 import { CoreModule } from '@angular/flex-layout';
 import { CartItemsCountComponent } from './shared/cart/cart-items-count/cart-items-count.component';
 import { AddToCartComponent } from './shared/cart/add-to-cart/add-to-cart.component';
+import { AddToCartDialogComponent } from './shared/cart/add-to-cart-dialog/add-to-cart-dialog.component';
 
 @NgModule({
   imports: [
@@ -21,6 +22,8 @@ import { AddToCartComponent } from './shared/cart/add-to-cart/add-to-cart.compon
     CoreModule
   ],
   
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  
+  declarations: [AddToCartDialogComponent]
 })
 export class AppModule { }
