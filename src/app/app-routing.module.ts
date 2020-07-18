@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuardService } from '@core/auth/auth-guard.service';
 
 const routes: Routes = [
         {
@@ -18,7 +19,8 @@ const routes: Routes = [
         },
         {
           path: "cart",
-          loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
+          loadChildren: () => import('./cart/cart.module').then(m => m.CartModule),
+          canActivate: [AuthGuardService]
         }
 
         // to refactoring we are gonna move on the AuthRouting module

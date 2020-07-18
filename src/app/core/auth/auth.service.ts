@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { of, Subject, throwError, EMPTY } from 'rxjs';
+import { of, Subject, throwError, EMPTY, BehaviorSubject } from 'rxjs';
 import { switchMap, catchError } from 'rxjs/operators';
 import { User } from '../user';
 import { HttpClient } from '@angular/common/http';
@@ -16,17 +16,26 @@ interface UserDto {
 })
 export class AuthService {
 
-  private user$ = new Subject<User>();
+  private user$ = new BehaviorSubject<User>(null);
   private apiUrl= '/api/auth/';
+  private redirectUrlAfterLogin = '';
 
   constructor(private httpClient: HttpClient,
     private tokenStorage: TokenStorageService,
     private logService: LogService) { }
 
+  get isUserLoggedIn() {
+    return this.user$.value != null;
+  }
+
+  set redirectUrl(url: string){
+    this.redirectUrlAfterLogin = url;
+  }
+
   login(email: string, password: string){
 
     const loginCredentials = {email, password};
-    console.log('Login creadentials', loginCredentials);
+    console.log('Login credentials', loginCredentials);
 
     return this.httpClient.post<UserDto>(`${this.apiUrl}login`,
     loginCredentials).pipe(
@@ -34,11 +43,11 @@ export class AuthService {
           this.setUser(user);
           this.tokenStorage.setToken(token);
           console.log(`User found`, user);
-          return of(user);
+          return of(this.redirectUrlAfterLogin);
         }
       ),
       catchError(e => {
-        this.logService.log(`Server Error Occureed: ${e.error.message} `, e);
+        this.logService.log(`Server Error Occurred: ${e.error.message} `, e);
         //replace this for//console.log(`Your login details could not be verified. Please try again`, e );
         return throwError(`Your login details could notbe verified. Please try again`);
       })
