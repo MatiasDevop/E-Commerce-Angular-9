@@ -18,6 +18,7 @@ export class AuthService {
 
   private user$ = new BehaviorSubject<User>(null);
   private apiUrl= '/api/auth/';
+  private redirectUrlAfterLogin = '';
 
   constructor(private httpClient: HttpClient,
     private tokenStorage: TokenStorageService,
@@ -25,6 +26,10 @@ export class AuthService {
 
   get isUserLoggedIn() {
     return this.user$.value != null;
+  }
+
+  set redirectUrl(url: string){
+    this.redirectUrlAfterLogin = url;
   }
 
   login(email: string, password: string){
@@ -38,7 +43,7 @@ export class AuthService {
           this.setUser(user);
           this.tokenStorage.setToken(token);
           console.log(`User found`, user);
-          return of(user);
+          return of(this.redirectUrlAfterLogin);
         }
       ),
       catchError(e => {

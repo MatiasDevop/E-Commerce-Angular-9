@@ -11,7 +11,9 @@ export class AuthGuardService implements CanActivate {
 
   constructor(private authService: AuthService, private router: Router) { }
   
-  canActivate() {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    this.authService.redirectUrl = state.url;
+    
     if (this.authService.isUserLoggedIn) {
       return true;
     }
