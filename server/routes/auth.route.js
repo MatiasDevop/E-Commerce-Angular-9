@@ -36,6 +36,7 @@ async function getUserbyEmailIdAndPassword(req, res ,next){
 }
 
 function login(req, res){
+    //throw new Error('Server Error while Login')// just for test
     const user = req.user;
     const token = authController.generateToken(user);
     res.json({

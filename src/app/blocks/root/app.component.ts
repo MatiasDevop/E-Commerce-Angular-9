@@ -17,7 +17,7 @@ export class AppComponent implements OnDestroy, OnInit{
   
   ngOnInit(): void {
       this.user = this.authService.user;
-      // WHEN you reload the page this works for mainten the user login
+      // WHEN you reload the page this works for keeping the user login
       this.userSubscription = this.authService
         .findMe()
         .subscribe(user => (this.user = user));

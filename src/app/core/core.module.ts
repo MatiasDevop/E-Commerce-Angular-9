@@ -6,6 +6,7 @@ import { throwIfAlreadyLoaded } from './utils/module-import-guard';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthHeaderInterceptorService } from './interceptors/auth-header-interceptor.service';
 import { SharedModule } from '../shared/shared.module';
+import { HttpErrorInterceptorService } from './interceptors/http-error-interceptor.service';
 
 // here we brought Providers form appModule to core never imported multiples times
 @NgModule({
@@ -14,6 +15,11 @@ import { SharedModule } from '../shared/shared.module';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHeaderInterceptorService,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptorService,
       multi: true
     }
   ],
@@ -25,7 +31,7 @@ import { SharedModule } from '../shared/shared.module';
 })
 export class CoreModule {
 
-  // this config is becaouse it can not be imported multiple times
+  // this config is because it can not be imported multiple times
   constructor(@Optional() @SkipSelf() parentModule: CoreModule){
     throwIfAlreadyLoaded(parentModule, 'CoreModule');
   }
