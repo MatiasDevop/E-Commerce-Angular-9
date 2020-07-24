@@ -12,7 +12,7 @@
                 "<node_internals>/**"
             ],
             "port": 9229,
-            "cwd": "${workspaceFolder}",
+            "cwd":"${workspaceFolder}",
             "runtimeExecutable": "npm",
             "runtimeArgs": [
                 "run-script",
