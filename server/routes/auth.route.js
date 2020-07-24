@@ -9,7 +9,7 @@ const router = express.Router();
 
 //localhost:4050/api/auth/register
 router.post('/register', asyncHandler(insert), login);
-router.post('/login', asyncHandler(getUserbyEmailIdAndPassword), login);//passport.authenticate("local", {session: false }), login); //;
+router.post('/login', passport.authenticate("local", { session: false}), login);//asyncHandler(getUserbyEmailIdAndPassword), login);//passport.authenticate("local", {session: false }), login); //;
 router.get('/findme', passport.authenticate("jwt", {session: false }), login);
 
 async function insert(req, res , next){ // dont forget next when you arrive middleware
@@ -22,18 +22,18 @@ async function insert(req, res , next){ // dont forget next when you arrive midd
     next();
 }
 
-async function getUserbyEmailIdAndPassword(req, res ,next){
-    const user = req.body;
-    console.log(`searching user for`, user);
-    const savedUser = await userController.getUserbyEmailIdAndPassword(
-        user.email,
-        user.password
-    );
-    req.user = savedUser;
+// async function getUserbyEmailIdAndPassword(req, res ,next){
+//     const user = req.body;
+//     console.log(`searching user for`, user);
+//     const savedUser = await userController.getUserbyEmailIdAndPassword(
+//         user.email,
+//         user.password
+//     );
+//     req.user = savedUser;
 
-    next();
+//     next();
 
-}
+// }
 
 function login(req, res){
     //throw new Error('Server Error while Login')// just for test
