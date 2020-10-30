@@ -59,7 +59,7 @@ export class AuthService {
     //remove token from localstorage
     this.tokenStorage.removeToken();
     this.setUser(null);
-    console.log('user did logout succesfull');
+    console.log('user did logout successfully');
 
   }
   get user() {
@@ -69,11 +69,8 @@ export class AuthService {
   register(userToSave: any){
     return this.httpClient.post<any>(`${this.apiUrl}register`, userToSave).pipe
     (
-      switchMap(({user, token}) => {
-        this.setUser(user);
-        this.tokenStorage.setToken(token);
-        console.log(`user registerd successfully`, user);
-        return of(user)
+      switchMap(({ user, token }) => {
+        return this.setUserAfterUserFoundFromServer(user, token);
       }),
       catchError(e=>{
         console.log(`server error occured`, e);
@@ -81,12 +78,6 @@ export class AuthService {
       })
     )
 
-    // //Make a Api call to save user in db
-    // // update the user subject
-    // this.setUser(user);
-
-    // console.log(`Registered user successfully`, user);
-    // return of(user);
   }
 
   findMe(){
@@ -97,10 +88,8 @@ export class AuthService {
 
     return this.httpClient.get<any>(`${this.apiUrl}findme`)
     .pipe(
-      switchMap(foundUser =>{
-          this.setUser(foundUser);
-          console.log(`User found`, foundUser);
-          return of(foundUser);
+      switchMap(({ user, token }) => {
+         return this.setUserAfterUserFoundFromServer(user, token);
         }
       ),
       catchError(e => {
@@ -110,7 +99,22 @@ export class AuthService {
     )
   }
 
+  private setUserAfterUserFoundFromServer(user: User, token: string){
+    this.setUser(user);
+    this.tokenStorage.setToken(token);
+    this.logService.log(`User found in server`, user);
+
+    return of(user);
+  }
+
   private setUser(user){
-    this.user$.next(user);
+    if (user) {
+      const newUser = { ...user, id: user._id };
+      this.user$.next(newUser);
+      this.logService.log(`Logged In User`, newUser);
+    } else {
+      this.user$.next(null);
+    }
+
   }
 }

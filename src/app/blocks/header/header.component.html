@@ -23,8 +23,8 @@
           Login</a>
           <div>
               <a mat-button *ngIf="user" [matMenuTriggerFor]="menu">
-                <mat-icon>account_circle</mat-icon>            
-                  <span dxShow="true"
+                <mat-icon>account_box</mat-icon>            
+                  <span fxShow="true"
                     fxHide.lt-md="true">{{ user.fullname }}</span>
               </a>
               <mat-menu #menu="matMenu">
