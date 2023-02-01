@@ -38,7 +38,7 @@
     "helmet": "^3.23.3",
     "http-errors": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.9.25",
+    "mongoose": "^5.13.15",
     "morgan": "^1.10.0",
     "newman": "^5.1.2",
     "passport": "^0.4.1",
